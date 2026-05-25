@@ -1,19 +1,26 @@
-📊 Instron Results Table - Vue.js
+# 📊 Instron Results Table - Vue.js
 
 Sistema desenvolvido em Vue.js para visualização de resultados provenientes da máquina Instron através de uma API conectada a uma base de dados SQL Server.
 
-O objetivo do projeto é apresentar os resultados dos testes de forma dinâmica, organizada e em tempo real, consumindo dados armazenados na tabela resultados.
+O objetivo do projeto é apresentar os resultados dos testes de forma dinâmica, organizada e em tempo real, consumindo dados armazenados na tabela `resultados`.
 
-🚀 Tecnologias Utilizadas
-Vue.js 3
-Vite
-JavaScript
-Node.js
-Axios
-SQL Server
-Express.js
+---
 
-📁 Estrutura do Projeto
+# 🚀 Tecnologias Utilizadas
+
+- Vue.js 3
+- Vite
+- JavaScript
+- Node.js
+- Axios
+- SQL Server
+- Express.js
+
+---
+
+# 📁 Estrutura do Projeto
+
+```bash
 src/
 ├── services/
 │   └── instronRealService.js
@@ -26,60 +33,106 @@ src/
 │
 ├── App.vue
 └── main.js
+```
 
-⚙️ Funcionalidades
-✅ Consumo de API REST
-✅ Ligação com SQL Server
-✅ Atualização dinâmica dos resultados
-✅ Renderização automática de tabelas
-✅ Estrutura modular em componentes
-✅ Organização separada entre lógica, estilos e interface
-✅ Tratamento básico de erros da API
+---
 
-🗄️ Estrutura da Base de Dados
+# ⚙️ Funcionalidades
+
+- ✅ Consumo de API REST
+- ✅ Ligação com SQL Server
+- ✅ Atualização dinâmica dos resultados
+- ✅ Renderização automática de tabelas
+- ✅ Estrutura modular em componentes
+- ✅ Organização separada entre lógica, estilos e interface
+- ✅ Tratamento básico de erros da API
+
+---
+
+# 🗄️ Estrutura da Base de Dados
 
 Tabela utilizada:
 
+```sql
 resultados
+```
 
 Campos:
 
-Campo	Tipo
-id	int
-table_number	int
-result_json	nvarchar(max)
-created_at	datetime
+| Campo | Tipo |
+|------|------|
+| id | int |
+| table_number | int |
+| result_json | nvarchar(max) |
+| created_at | datetime |
 
-📦 Instalação
-1. Clonar o projeto
+---
+
+# 📦 Instalação
+
+## 1. Clonar o projeto
+
+```bash
 git clone https://github.com/Hewllsing/Instron_results_table_vuejs.git
-2. Entrar na pasta do projeto
+```
+
+## 2. Entrar na pasta do projeto
+
+```bash
 cd Instron_results_table_vuejs
+```
 
-🔧 Frontend
-Instalar dependências
+---
+
+# 🔧 Frontend
+
+## Instalar dependências
+
+```bash
 npm install
-Executar projeto
-npm run dev
+```
 
-🔌 Backend
+## Executar projeto
+
+```bash
+npm run dev
+```
+
+---
+
+# 🔌 Backend
 
 Entrar na pasta do backend:
 
+```bash
 cd backend
-Instalar dependências
-npm install
-Executar servidor
-npm run dev
+```
 
-🌐 API
+## Instalar dependências
+
+```bash
+npm install
+```
+
+## Executar servidor
+
+```bash
+npm run dev
+```
+
+---
+
+# 🌐 API
 
 Exemplo de endpoint:
 
+```http
 GET /api/resultados
+```
 
 Resposta esperada:
 
+```json
 {
   "tableNumber": 1,
   "data": [
@@ -103,39 +156,56 @@ Resposta esperada:
     ]
   ]
 }
+```
 
-🧠 Como Funciona
-O backend conecta ao SQL Server
-Os dados da tabela resultados são lidos
-O campo result_json é convertido para objeto JavaScript
-O frontend consome a API
-As tabelas são renderizadas automaticamente em Vue.js
-📸 Interface
+---
+
+# 🧠 Como Funciona
+
+1. O backend conecta ao SQL Server
+2. Os dados da tabela `resultados` são lidos
+3. O campo `result_json` é convertido para objeto JavaScript
+4. O frontend consome a API
+5. As tabelas são renderizadas automaticamente em Vue.js
+
+---
+
+# 📸 Interface
 
 O sistema apresenta:
 
-Número da tabela
-Dados dos testes
-Estrutura dinâmica baseada no JSON recebido
-Atualização automática conforme novos inserts na base de dados
+- Número da tabela
+- Dados dos testes
+- Estrutura dinâmica baseada no JSON recebido
+- Atualização automática conforme novos inserts na base de dados
 
-🛠️ Melhorias Futuras
-Atualização em tempo real com WebSockets
-Paginação dos resultados
-Filtros por data
-Exportação para Excel/PDF
-Dashboard com gráficos
-Sistema de autenticação
-Histórico de testes
+---
 
-👨‍💻 Autor
+# 🛠️ Melhorias Futuras
+
+- Atualização em tempo real com WebSockets
+- Paginação dos resultados
+- Filtros por data
+- Exportação para Excel/PDF
+- Dashboard com gráficos
+- Sistema de autenticação
+- Histórico de testes
+
+---
+
+# 👨‍💻 Autor
 
 Desenvolvido por Leonardo Souza
 
-Software Developer
-Vue.js • Node.js • SQL Server
+### Software Developer
+Vue.js • Node.js • SQL Server  
 Integrações industriais e APIs
 
-📄 Licença
+GitHub:
+https://github.com/Hewllsing
+
+---
+
+# 📄 Licença
 
 Este projeto é destinado para fins de estudo, demonstração técnica e integração de sistemas industriais.
