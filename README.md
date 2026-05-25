@@ -1,336 +1,141 @@
-# 🚀 Instron Dashboard System
+📊 Instron Results Table - Vue.js
 
-Sistema completo para monitoramento e visualização de resultados da máquina Instron utilizando:
+Sistema desenvolvido em Vue.js para visualização de resultados provenientes da máquina Instron através de uma API conectada a uma base de dados SQL Server.
 
-- Vue.js
-- Node.js
-- MariaDB
-- API Industrial Self-Host em C#
+O objetivo do projeto é apresentar os resultados dos testes de forma dinâmica, organizada e em tempo real, consumindo dados armazenados na tabela resultados.
 
-O projeto realiza integração com a API InstronBridgeSelfHost para obter resultados de ensaios laboratoriais do software Bluehill e armazená-los numa base de dados para visualização em dashboard web.
+🚀 Tecnologias Utilizadas
+Vue.js 3
+Vite
+JavaScript
+Node.js
+Axios
+SQL Server
+Express.js
 
----
-
-# 🏗️ Arquitetura do Projeto
-
-```txt
-Frontend (Vue.js)
-        ↓
-Backend API (Node.js + Express)
-        ↓
-InstronBridgeSelfHost API (C#)
-        ↓
-Bluehill / Instron
-        ↓
-MariaDB
-```
-
----
-
-# ⚙️ Tecnologias Utilizadas
-
-## Frontend
-
-- Vue.js 3
-- Composition API
-- Axios
-- CSS Components
-
-## Backend
-
-- Node.js
-- Express.js
-- Axios
-- MariaDB
-- mysql2
-
-## Integração Industrial
-
-- C#
-- ASP.NET Web API
-- OWIN Self Host
-- Bluehill API
-- Instron Machine
-
----
-
-# 📂 Estrutura do Projeto
-
-## Frontend
-
-```txt
-frontend/
+📁 Estrutura do Projeto
+src/
+├── services/
+│   └── instronRealService.js
 │
-├── src/
-│   ├── components/
-│   │
-│   ├── services/
-│   │
-│   ├── assets/
-│   │
-│   └── App.vue
-```
-
-## Backend
-
-```txt
-backend/
+├── components/
+│   └── InstronReal/
+│       ├── InstronReal.vue
+│       ├── InstronReal.js
+│       └── InstronReal.css
 │
-├── src/
-│   ├── config/
-│   │   └── db.js
-│   │
-│   ├── routes/
-│   │
-│   ├── services/
-│   │
-│   └── server.js
-```
+├── App.vue
+└── main.js
 
----
+⚙️ Funcionalidades
+✅ Consumo de API REST
+✅ Ligação com SQL Server
+✅ Atualização dinâmica dos resultados
+✅ Renderização automática de tabelas
+✅ Estrutura modular em componentes
+✅ Organização separada entre lógica, estilos e interface
+✅ Tratamento básico de erros da API
 
-# 🔌 Funcionalidades
+🗄️ Estrutura da Base de Dados
 
-## ✅ Monitoramento da API
+Tabela utilizada:
 
-Visualização em tempo real do estado da API:
+resultados
 
-- Status online/offline
-- Estado do Bluehill
-- Código do último estado
-- Mensagem da API
-- Estado da conexão
+Campos:
 
----
+Campo	Tipo
+id	int
+table_number	int
+result_json	nvarchar(max)
+created_at	datetime
 
-## ✅ Resultados Instron
+📦 Instalação
+1. Clonar o projeto
+git clone https://github.com/Hewllsing/Instron_results_table_vuejs.git
+2. Entrar na pasta do projeto
+cd Instron_results_table_vuejs
 
-Visualização dinâmica de resultados:
+🔧 Frontend
+Instalar dependências
+npm install
+Executar projeto
+npm run dev
 
-- Tabelas dinâmicas
-- Dados formatados
-- Histórico de resultados
-- Scroll responsivo
-- Dashboard moderno
+🔌 Backend
 
----
+Entrar na pasta do backend:
 
-## ✅ Integração com MariaDB
-
-Os resultados recebidos da API são armazenados automaticamente na base de dados.
-
----
-
-## ✅ Mock Data
-
-O sistema possui endpoints de testes para inserção de dados fictícios:
-
-```http
-POST /api/instron/fake-results
-```
-
-Ideal para:
-- desenvolvimento frontend
-- testes de dashboard
-- testes sem máquina conectada
-
----
-
-# 🗄️ Base de Dados
-
-## Tabela Resultados
-
-```sql
-CREATE TABLE resultados (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    table_number INT NOT NULL,
-    result_json LONGTEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
----
-
-# 📡 Endpoints Backend
-
-## Health
-
-```http
-GET /api/instron/health
-```
-
----
-
-## Sincronizar Resultados
-
-```http
-POST /api/instron/sync-results
-```
-
----
-
-## Inserir Resultados Fake
-
-```http
-POST /api/instron/fake-results
-```
-
----
-
-## Obter Resultados
-
-```http
-GET /api/resultados
-```
-
----
-
-# ▶️ Instalação
-
-# 1️⃣ Clonar o repositório
-
-```bash
-git clone <repo-url>
-```
-
----
-
-# 2️⃣ Backend
-
-```bash
 cd backend
-
+Instalar dependências
 npm install
-```
-
-## Configurar `.env`
-
-```env
-PORT=3000
-
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=instron_db
-```
-
----
-
-## Executar backend
-
-```bash
+Executar servidor
 npm run dev
-```
 
----
+🌐 API
 
-# 3️⃣ Frontend
+Exemplo de endpoint:
 
-```bash
-cd frontend
+GET /api/resultados
 
-npm install
-```
+Resposta esperada:
 
-## Executar frontend
-
-```bash
-npm run dev
-```
-
----
-
-# 🧪 Integração com InstronBridgeSelfHost
-
-O backend Node.js comunica diretamente com a API:
-
-```http
-http://localhost:9000/api/instron
-```
-
-Endpoints utilizados:
-
-```http
-/api/instron/health
-/api/instron/results/formatted
-```
-
----
-
-# 📊 Exemplo de Resultado Recebido
-
-```json
 {
-    "tableNumber": 1,
-    "data": [
-        [
-            null,
-            "S0 [mm^2]",
-            "Rp0.2 [N/mm^2]",
-            "Rm [N/mm^2]",
-            "Ag [%]",
-            "A 50mm [%]",
-            "Status"
-        ],
-        [
-            "1",
-            "39.17",
-            "243",
-            "260",
-            "8.42",
-            "13.03",
-            "ok"
-        ]
+  "tableNumber": 1,
+  "data": [
+    [
+      null,
+      "S0 [mm^2]",
+      "Rp0.2 [N/mm^2]",
+      "Rm [N/mm^2]",
+      "Ag [%]",
+      "A 50mm [%]",
+      "Status"
+    ],
+    [
+      "1",
+      "39.17",
+      "243",
+      "260",
+      "8.42",
+      "13.03",
+      "ok"
     ]
+  ]
 }
-```
 
----
+🧠 Como Funciona
+O backend conecta ao SQL Server
+Os dados da tabela resultados são lidos
+O campo result_json é convertido para objeto JavaScript
+O frontend consome a API
+As tabelas são renderizadas automaticamente em Vue.js
+📸 Interface
 
-# 📈 Melhorias Futuras
+O sistema apresenta:
 
-- WebSockets para atualização em tempo real
-- Dashboard analytics
-- Gráficos de ensaios
-- Histórico de máquinas
-- Logs industriais
-- Sistema de autenticação
-- Exportação PDF/Excel
-- Docker
-- Deploy industrial local
-- Multi-machine support
+Número da tabela
+Dados dos testes
+Estrutura dinâmica baseada no JSON recebido
+Atualização automática conforme novos inserts na base de dados
 
----
+🛠️ Melhorias Futuras
+Atualização em tempo real com WebSockets
+Paginação dos resultados
+Filtros por data
+Exportação para Excel/PDF
+Dashboard com gráficos
+Sistema de autenticação
+Histórico de testes
 
-# 🏭 Objetivo do Projeto
+👨‍💻 Autor
 
-Este projeto foi desenvolvido para estudo e demonstração de:
-
-- Integração industrial
-- Comunicação entre APIs
-- Arquitetura distribuída
-- Dashboards modernos
-- Sistemas laboratoriais
-- Integração com equipamentos reais
-- Persistência de dados industriais
-
----
-
-# 👨‍💻 Autor
-
-Leonardo Souza
+Desenvolvido por Leonardo Souza
 
 Software Developer
+Vue.js • Node.js • SQL Server
+Integrações industriais e APIs
 
-- C#
-- JavaScript
-- Vue.js
-- Node.js
-- Python
-- SQL
-- APIs REST
-- Sistemas Industriais
+📄 Licença
 
-GitHub:
-https://github.com/Hewllsing
-# Instron_results_table_vuejs
+Este projeto é destinado para fins de estudo, demonstração técnica e integração de sistemas industriais.
